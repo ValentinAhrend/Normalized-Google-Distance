@@ -99,7 +99,7 @@ def number_of_results(text):
   r = requests.get("https://www.google.com/search?q={}".format(text.replace(" ","+")), headers=headers)
   soup = BeautifulSoup(r.text, "lxml") # Get text response
   res = soup.find('div', {'id': 'result-stats'}) # Find result string 
-  return int(res.text.replace(",", "").split()[1]) # Return result int
+  return int(res.text.replace(".", "").split()[1]) # Return result int
 
 def sleep(alpha, beta):
   """Sleep for an amount of time in range(alpha, beta)"""
